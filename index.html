@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>School Countdown</title>
+ <style>
+  
+        body{
+
+    color: White;
+    font-size: 50px;
+    background-color: black;
+}
+#countdown{
+    margin-top: 20%;
+    font-size:8rem;
+
+}
+
+
+  </style>
+</head>
+<body>
+
+  <center><div id="countdown">Loading...</div></center>
+
+  <script>
+    // ✏️ Set your school start date here:
+    const schoolDate = new Date("September 21, 2025 08:00:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const diff = schoolDate - now;
+
+      if (diff <= 0) {
+        document.getElementById("countdown").innerHTML = "School has started!";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown").innerHTML = 
+        `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
